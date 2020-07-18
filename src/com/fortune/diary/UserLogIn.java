@@ -1,24 +1,38 @@
 package com.fortune.diary;
 
-import java.util.Arrays;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 
 public class UserLogIn extends DiaryHome implements Verifiable{
+    private NewUser mNewUser;
     private EditNote mEditNote;
 
     public void setEditNote(EditNote editNote) {
-        if(confirmCredentials(getUserEmail(),Verifiable.mValues)){
-
-        }
         mEditNote = editNote;
     }
 
     @Override
-    public void logInCredentials(String email, String password) {
-        System.out.print("Enter UserName or Email: ");
-        setUserEmail(email);
-        System.out.print("Enter User Password: ");
-        Arrays.fill(Verifiable.mValues, password);
-        Verifiable.credentials.put(getUserEmail(), mValues);
+    public void onLogIn(String email, String password) {
+        super.onLogIn(email, password);
+        System.out.printf("%-5s%n","Login");
+        System.out.println("Enter Email: ");
+        System.out.println("Enter Password: ");
+        logInCredentials(email, password);
+
+    }
+
+    @Override
+    public String logInCredentials(String email, String password) {
+
+        if(confirmCredentials(email, password)) {
+            return String.format("%nPassed!");
+
+        }
+        return String.format("%s%n", "Incorrect Email!");
     }
 
     @Override
@@ -27,8 +41,17 @@ public class UserLogIn extends DiaryHome implements Verifiable{
     }
 
     @Override
-    public boolean confirmCredentials(String email, String[] passwordName) {
-        return Verifiable.credentials.containsKey(email) && Verifiable.credentials.containsValue(passwordName);
+    public boolean confirmCredentials(String email, String passwordName) {
+
+        if(credentials.containsKey(email)){
+           if(credentials.containsValue(mMapValues)){
+
+
+
+
+          }
+        }
+        return false;
     }
 
 

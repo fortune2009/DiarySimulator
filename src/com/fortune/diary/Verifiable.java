@@ -1,17 +1,16 @@
 package com.fortune.diary;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public interface Verifiable {
- static Map<String, String[]> credentials = new LinkedHashMap<>();
-    String[] mValues = new String[2];
+ static Map<String, TreeMap<String,String>> credentials = new HashMap<>();
+    TreeMap<String, String> mMapValues = new TreeMap<>();
 
-    void logInCredentials(String email, String password);
+    String logInCredentials(String email, String password);
 
     void signUpCredentials(String fullName, String email, String password);
 
-    boolean confirmCredentials(String email, String[] values);
+    boolean confirmCredentials(String email,  String values);
 
 
 }

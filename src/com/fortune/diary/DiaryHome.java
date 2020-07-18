@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 
 public class DiaryHome {
-    private Verifiable mVerifiable;
     private String userName;
     private String userEmail;
     private String userPassword;
@@ -24,25 +23,25 @@ public class DiaryHome {
     public DiaryHome(String userName, String userEmail, String userPassword) {
         Pattern pattern = Pattern.compile("^(.+)@(.+)$");
         Matcher matcher = pattern.matcher(userEmail);
-        System.out.println("The email address " + userEmail +
-                " is " + (matcher.matches() ? "[valid]" : "[invalid]"));
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("The email address " + userEmail +
+                    " is " + "[invalid]");
+        }
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
     }
-    public void onLogIn(int choice){
-        System.out.println("Enter 1 to Login " +
-                "\nEnter 2 to SignUp");
-        if(choice == 1){
-        mVerifiable.logInCredentials(userEmail, userPassword);
-        }
-        else if(choice == 2){
-            mVerifiable.signUpCredentials(userName, userEmail, userPassword);
-        }
+
+    public void onLogIn(String email, String password){
+        userEmail = email;
+        userPassword = password;
     }
 
-    public void onSignUp(String fullName, String email, String password){
-
+    public String onSignUp(String fullName, String email, String password){
+        userName = fullName;
+        userEmail = email;
+        userPassword = password;
+        return null;
     }
 
     public String getUserName() {
@@ -61,8 +60,10 @@ public class DiaryHome {
 
             Pattern pattern = Pattern.compile("^(.+)@(.+)$");
             Matcher matcher = pattern.matcher(userEmail);
-        System.out.println("The email address " + userEmail +
-                " is " + (matcher.matches() ? "[valid]" : "[invalid]"));
+            if(!matcher.matches()) {
+                throw new IllegalArgumentException("The email address " + userEmail +
+                        " is " +  "[invalid]");
+            }
         this.userEmail = userEmail;
     }
 

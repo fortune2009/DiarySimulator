@@ -1,10 +1,12 @@
 package com.fortune.diary;
 
-import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class NewUser extends DiaryHome implements Verifiable{
     private Scanner mScanner;
+
 
 
     public NewUser() {
@@ -19,31 +21,34 @@ public class NewUser extends DiaryHome implements Verifiable{
     }
 
     @Override
-    public void onSignUp(String fullName, String email, String password) {
+    public String onSignUp(String fullName, String email, String password) {
+        super.onSignUp(fullName, email, password);
         signUpCredentials(fullName, email, password);
+        return String.format("%n%s", "Completed!");
     }
 
     @Override
     public void signUpCredentials(String fullName, String email, String password) {
-        System.out.print("Sign Up\nEnter UserName: ");
+        System.out.println("Sign Up\nEnter UserName: ");
         setUserName(fullName);
         System.out.println("Enter Email: ");
         setUserEmail(email);
-        System.out.print("Enter Password: ");
+        System.out.println("Enter Password: ");
         setUserPassword(password);
-        Arrays.fill(mValues, fullName);
-        Arrays.fill(mValues, password);
-        Verifiable.credentials.put(email, mValues);
+        mMapValues.put(password, getUserName());
+        credentials.put(getUserEmail(), mMapValues);
+        System.out.println(credentials.toString());
     }
 
     @Override
-    public void logInCredentials(String email, String password) {
+    public String logInCredentials(String email, String password) {
+        return null;
     }
 
 
 
     @Override
-    public boolean confirmCredentials(String email, String[] password) {
+    public boolean confirmCredentials(String email, String password) {
         return false;
     }
 }
