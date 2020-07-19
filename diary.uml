@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.fortune.diary</OriginalElement>
+  <nodes>
+    <node x="100.0" y="359.0">com.fortune.diary.EditNote</node>
+    <node x="573.0" y="0.0">com.fortune.diary.DiaryHome</node>
+    <node x="20.0" y="56.0">com.fortune.diary.Retrivable</node>
+    <node x="193.0" y="45.0">com.fortune.diary.Verifiable</node>
+    <node x="449.00694444444446" y="292.0">com.fortune.diary.NewUser</node>
+    <node x="167.93750000000003" y="571.0">com.fortune.diary.UserLogIn</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.fortune.diary.NewUser" target="com.fortune.diary.NewUser">
+      <point x="-77.75" y="104.5" />
+      <point x="526.7569444444445" y="521.0" />
+      <point x="429.00694444444446" y="521.0" />
+      <point x="429.00694444444446" y="396.5" />
+      <point x="-155.5" y="-0.0" />
+    </edge>
+    <edge source="com.fortune.diary.EditNote" target="com.fortune.diary.Verifiable">
+      <point x="34.75" y="-37.5" />
+      <point x="204.25" y="272.0" />
+      <point x="227.0" y="272.0" />
+      <point x="-136.0" y="71.0" />
+    </edge>
+    <edge source="com.fortune.diary.NewUser" target="com.fortune.diary.Verifiable">
+      <point x="-116.625" y="-104.5" />
+      <point x="487.88194444444446" y="272.0" />
+      <point x="431.0" y="272.0" />
+      <point x="68.0" y="71.0" />
+    </edge>
+    <edge source="com.fortune.diary.DiaryHome" target="com.fortune.diary.DiaryHome">
+      <point x="-100.875" y="116.0" />
+      <point x="606.625" y="252.0" />
+      <point x="553.0" y="252.0" />
+      <point x="553.0" y="116.0" />
+      <point x="-134.5" y="-0.0" />
+    </edge>
+    <edge source="com.fortune.diary.UserLogIn" target="com.fortune.diary.UserLogIn">
+      <point x="0.0" y="82.5" />
+      <point x="323.4375" y="756.0" />
+      <point x="147.9375" y="756.0" />
+      <point x="147.9375" y="653.5" />
+      <point x="-155.5" y="-0.0" />
+    </edge>
+    <edge source="com.fortune.diary.UserLogIn" target="com.fortune.diary.DiaryHome">
+      <point x="129.58333333333337" y="-82.5" />
+      <point x="453.02083333333337" y="551.0" />
+      <point x="799.8125" y="551.0" />
+      <point x="799.8125" y="272.0" />
+      <point x="808.375" y="272.0" />
+      <point x="100.875" y="116.0" />
+    </edge>
+    <edge source="com.fortune.diary.NewUser" target="com.fortune.diary.DiaryHome">
+      <point x="38.875" y="-104.5" />
+      <point x="643.3819444444445" y="272.0" />
+      <point x="673.875" y="272.0" />
+      <point x="-33.625" y="116.0" />
+    </edge>
+    <edge source="com.fortune.diary.EditNote" target="com.fortune.diary.Retrivable">
+      <point x="-34.75" y="-37.5" />
+      <point x="38.25" y="60.0" />
+    </edge>
+    <edge source="com.fortune.diary.UserLogIn" target="com.fortune.diary.Verifiable">
+      <point x="25.91666666666663" y="-82.5" />
+      <point x="349.35416666666663" y="551.0" />
+      <point x="333.38194444444446" y="551.0" />
+      <point x="333.38194444444446" y="272.0" />
+      <point x="363.0" y="272.0" />
+      <point x="0.0" y="71.0" />
+    </edge>
+    <edge source="com.fortune.diary.Retrivable" target="com.fortune.diary.Retrivable">
+      <point x="-38.25" y="60.0" />
+      <point x="58.25" y="196.0" />
+      <point x="0.0" y="196.0" />
+      <point x="0.0" y="116.0" />
+      <point x="-76.5" y="-0.0" />
+    </edge>
+    <edge source="com.fortune.diary.UserLogIn" target="com.fortune.diary.EditNote">
+      <point x="-129.58333333333337" y="-82.5" />
+      <point x="193.85416666666666" y="551.0" />
+      <point x="134.75" y="551.0" />
+      <point x="-34.75" y="37.5" />
+    </edge>
+    <edge source="com.fortune.diary.UserLogIn" target="com.fortune.diary.NewUser">
+      <point x="77.75" y="-82.5" />
+      <point x="401.1875" y="541.0" />
+      <point x="682.2569444444445" y="541.0" />
+      <point x="77.75" y="104.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="454.0" y="420.0" />
+  <SelectedNodes>
+    <node>com.fortune.diary.UserLogIn</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
