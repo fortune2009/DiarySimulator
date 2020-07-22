@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.fortune.diary</OriginalElement>
+  <nodes>
+    <node x="100.0" y="359.0">com.fortune.diary.EditNote</node>
+    <node x="573.0" y="0.0">com.fortune.diary.DiaryHome</node>
+    <node x="449.00694444444446" y="292.0">com.fortune.diary.NewUser</node>
+    <node x="167.93750000000003" y="571.0">com.fortune.diary.UserLogIn</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.fortune.diary.UserLogIn" target="com.fortune.diary.DiaryHome">
+      <point x="129.58333333333337" y="-82.5" />
+      <point x="453.02083333333337" y="551.0" />
+      <point x="799.8125" y="551.0" />
+      <point x="799.8125" y="272.0" />
+      <point x="808.375" y="272.0" />
+      <point x="100.875" y="116.0" />
+    </edge>
+    <edge source="com.fortune.diary.NewUser" target="com.fortune.diary.DiaryHome">
+      <point x="38.875" y="-104.5" />
+      <point x="643.3819444444445" y="272.0" />
+      <point x="673.875" y="272.0" />
+      <point x="-33.625" y="116.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7227272727272728" x="461.0" y="430.0" />
+  <SelectedNodes>
+    <node>com.fortune.diary.UserLogIn</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
