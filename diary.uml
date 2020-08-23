@@ -25,7 +25,7 @@
       <point x="-33.625" y="116.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.7227272727272728" x="461.0" y="430.0" />
+  <settings layout="Hierarchic Group" zoom="0.801007556675063" x="461.0" y="387.0" />
   <SelectedNodes>
     <node>com.fortune.diary.UserLogIn</node>
   </SelectedNodes>

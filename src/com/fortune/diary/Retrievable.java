@@ -5,13 +5,13 @@ import java.util.Date;
 public interface Retrievable {
     Date date = new Date();
 
-    default Date showDate(){
+    default Date showDate() {
         return date;
     }
 
     void saveNote(String title, String note);
 
-    default void deleteNote(){
+    default void deleteNote() {
 
     }
 }

@@ -1,10 +1,11 @@
 package com.fortune.diary;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class DiaryHome {
+public class DiaryHome implements Serializable {
     private String userName;
     private String userEmail;
     private String userPassword;
@@ -31,12 +32,12 @@ public class DiaryHome {
         this.userPassword = userPassword;
     }
 
-    public void onLogIn(String email, String password){
+    public void onLogIn(String email, String password) {
         userEmail = email;
         userPassword = password;
     }
 
-    public String onSignUp(String fullName, String email, String password){
+    public String onSignUp(String fullName, String email, String password) {
         userName = fullName;
         userEmail = email;
         userPassword = password;
@@ -57,12 +58,12 @@ public class DiaryHome {
 
     public void setUserEmail(String userEmail) {
 
-            Pattern pattern = Pattern.compile("^(.+)@(.+)$");
-            Matcher matcher = pattern.matcher(userEmail);
-            if(!matcher.matches()) {
-                throw new IllegalArgumentException("The email address " + userEmail +
-                        " is " +  "[invalid]");
-            }
+        Pattern pattern = Pattern.compile("^(.+)@(.+)$");
+        Matcher matcher = pattern.matcher(userEmail);
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("The email address " + userEmail +
+                    " is " + "[invalid]");
+        }
         this.userEmail = userEmail;
     }
 

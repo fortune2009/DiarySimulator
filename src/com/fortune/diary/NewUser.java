@@ -1,41 +1,45 @@
 package com.fortune.diary;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NewUser extends Verifier {
     private Scanner mScanner;
 
-    public NewUser(){
+    public NewUser() {
         super();
 
     }
-    public NewUser(String userEmail, String userPassword) {
-        super(userEmail, userPassword);
-    }
+
 
     @Override
     public String onSignUp(String fullName, String email, String password) {
         super.onSignUp(fullName, email, password);
         signUpCredentials(fullName, email, password);
-        saveSignUpData();
+        saveDetialSerr();
         return String.format("%n%s", "Completed!");
     }
 
+
     @Override
-    public void saveSignUpData() {
-        super.saveSignUpData();
+    public void saveDetialSerr() {
+        super.saveDetialSerr();
     }
+
 
     @Override
     public void signUpCredentials(String fullName, String email, String password) {
-        System.out.println("Sign Up\nEnter UserName: ");
-        setUserName(fullName);
-        System.out.println("Enter Email: ");
-        setUserEmail(email);
-        System.out.println("Enter Password: ");
-        setUserPassword(password);
-        credentials.put(getUserEmail(), getUserPassword());
-        System.out.println(credentials.toString());
+//        System.out.println("Sign Up\nEnter UserName: ");
+//        setUserName(fullName);
+//        System.out.println("Enter Email: ");
+//        setUserEmail(email);
+//        System.out.println("Enter Password: ");
+//        setUserPassword(password);
+        ArrayList<String> mArrayList = new ArrayList<>();
+        mArrayList.add(fullName);
+        mArrayList.add(password);
+        getCredentials().put(email, mArrayList);
+//        System.out.println(getCredentials().toString());
     }
 
     @Override

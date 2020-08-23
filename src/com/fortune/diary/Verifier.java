@@ -1,25 +1,32 @@
 package com.fortune.diary;
 
-import java.io.FileNotFoundException;
+import java.io.EOFException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class Verifier extends DiaryHome{
-    public static Map<String, String> credentials = new HashMap<>();
-    private Formatter mOutput;
-    private Scanner mInput;
-    private final String[] mInputArray = new String[3];
+public abstract class Verifier extends DiaryHome {
+    private static final Map<String, ArrayList<String>> credentials = new HashMap<>();
+    private final String[] mInputArray = new String[4];
+    private ObjectOutputStream out;
+    private ObjectInputStream input;
+    private DiaryHome mRecord;
+
+    public static Map<String, ArrayList<String>> getCredentials() {
+        return credentials;
+    }
+
+    public DiaryHome getRecord() {
+        return mRecord;
+    }
 
     public String[] getInputArray() {
         return mInputArray;
-    }
-
-    public Verifier(String userEmail, String userPassword) {
-    }
-
-    public Verifier() {
-
     }
 
     protected abstract boolean logInCredentials(String email, String password);
@@ -28,55 +35,67 @@ public abstract class Verifier extends DiaryHome{
 
     protected abstract boolean confirmCredentials(String email, String values);
 
-    public void saveSignUpData() {
-            try{
-                mOutput = new Formatter("signUp_data.txt");
-            } catch(FileNotFoundException e) {
-                System.err.println("Error opening file! Terminating...");
-                System.exit(1);
-            }
-            catch(SecurityException e){
-                System.err.println("Write permission denied! Terminating...");
-                System.exit(1);
-            }
+
+    public void saveDetialSerr() {
+        try {
+            out = new ObjectOutputStream(Files.newOutputStream(Paths.get("signUpKeeper.ser")));
+        } catch(IOException e) {
+            System.err.println("Error creating file. Terminating...");
+            System.exit(1);
+        }
         int count = 0;
-        while(count< credentials.size()){
+        while(count < credentials.size()) {
             try {
-               mOutput.format("%s %s %s%n", getUserName(), (credentials.containsKey(getUserEmail()) ? getUserEmail() : null),
-                           credentials.get(getUserEmail()));
-            } catch(FormatterClosedException e) {
-                System.err.println("Error writing to file. Terminating...");
+                DiaryHome mRecords = new DiaryHome(credentials.get(getUserEmail()).get(0), (credentials.containsKey(getUserEmail()) ? getUserEmail() : null),
+                        credentials.get(getUserEmail()).get(1));
+                out.writeObject(mRecords);
+            } catch(IOException e) {
+                System.err.println("Serial Faced Error writing to file. Terminating");
+                break;
             }
             count++;
         }
 
-            if(mOutput != null) {
-                mOutput.close();
+        try {
+            if(out != null) {
+                out.close();
             }
-    }
-
-    public void retriveSignUpData() {
-        try{
-            mInput = new Scanner(Paths.get("signUp_data.txt"));
         } catch(IOException e) {
-            System.err.println("Error opening file! Terminating...");
+            System.err.println("Error Occurred while Closing File.");
             System.exit(1);
         }
-//        System.out.printf("%-12s%-12s%10s%n", "Full Name", "Email", "Password");
-        while(mInput.hasNext()){
-            try {
-//                System.out.printf("%-12s%-12s%10s%n", mInput.next(), mInput.next(),mInput.next());
-                mInputArray[0] = mInput.next();
-                mInputArray[1] = mInput.next();
-                mInputArray[2] = mInput.next();
-//                System.out.println(Arrays.toString(mInputArray));
-            } catch(NoSuchElementException e) {
-                System.err.println("File improperly formed. Terminating...");
-            }
-            catch(NullPointerException e){
-                System.err.println("Null values in Arrays");
-            }
+    }
+
+    public void readSerDetails() {
+        try {
+            input = new ObjectInputStream(Files.newInputStream(Paths.get("signUpKeeper.ser")));
+        } catch(IOException e) {
+            System.err.println("Error Opening file. Terminating!");
         }
-        mInput.close();
+
+        try {
+            while(true) {
+                mRecord = (DiaryHome) input.readObject();
+//                System.out.printf("%s %s %s", mRecord.getUserName(), mRecord.getUserEmail(), mRecord.getUserPassword());
+
+            }
+        } catch(EOFException eofException) {
+            System.out.println("Checking Login Info");
+        } catch(ClassNotFoundException e) {
+            System.err.println("Class doesnt exist Oh");
+        } catch(IOException exception) {
+            System.err.println("Error Reading file");
+            System.exit(1);
+        }
+
+        try {
+            if(input != null) {
+                input.close();
+            }
+        } catch(IOException ioException) {
+            System.err.println("Error closing file. Terminating.");
+            System.exit(1);
+        }
+
     }
 }
